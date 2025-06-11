@@ -1,0 +1,26 @@
+.chat-fab {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  background-color: #002e3c !important;
+  animation: pulse 2s infinite;
+  z-index: 1000;
+}
+
+.chat-fab:hover {
+  background-color: #004459 !important;
+  transform: scale(1.1);
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 46, 60, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 46, 60, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 46, 60, 0);
+  }
+}

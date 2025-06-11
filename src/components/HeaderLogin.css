@@ -1,0 +1,9 @@
+img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.header-container{
+    display: flex;
+    align-items: center;
+}
