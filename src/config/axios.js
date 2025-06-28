@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Tạo instance Axios
 const api = axios.create({
-  baseURL: "https://aichatbotlaw.onrender.com",
+  baseURL: "http://localhost:5171/api",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
@@ -11,6 +11,14 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
+    // Không thêm Authorization cho login/register
+    if (
+      config.url &&
+      (config.url.includes("/Authenticate/login") ||
+        config.url.includes("/Authenticate/register"))
+    ) {
+      return config;
+    }
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

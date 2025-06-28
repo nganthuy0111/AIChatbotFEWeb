@@ -25,10 +25,10 @@ const RevenueCard = () => {
   const chartRef = useRef(null);
 
   const barChartData = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    labels: ["Th1", "Th2", "Th3", "Th4", "Th5", "Th6"],
     datasets: [
       {
-        label: "Email Subscriptions",
+        label: "Đăng ký Email",
         data: [400, 500, 300, 600, 200, 700],
         backgroundColor: "#ff9800",
       },
@@ -39,7 +39,7 @@ const RevenueCard = () => {
     responsive: true,
     plugins: {
       legend: { position: "top" },
-      title: { display: true, text: "Email Subscriptions" },
+      title: { display: true, text: "Đăng ký Email" },
     },
   };
 
@@ -62,10 +62,10 @@ const RevenueCard = () => {
         width: "75%",
       }}
     >
-      <Typography variant="h6">Revenue</Typography>
+      <Typography variant="h6">Doanh thu</Typography>
       <Typography variant="h4">$34,245</Typography>
       <Typography variant="body2" color="text.secondary">
-        Last 24 hours
+        24 giờ qua
       </Typography>
       <Bar data={barChartData} options={barChartOptions} ref={chartRef} />
     </Paper>

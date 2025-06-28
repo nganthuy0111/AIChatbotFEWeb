@@ -1,26 +1,105 @@
-.chat-fab {
-  position: fixed !important;
-  bottom: 2rem !important;
-  right: 2rem !important;
-  background-color: #002e3c !important;
-  animation: pulse 2s infinite;
+.chat-button-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
   z-index: 1000;
 }
 
-.chat-fab:hover {
-  background-color: #004459 !important;
+.chat-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #cdff09, #a8d600);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(124, 255, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #8fff10, #6bff00);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.chat-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(124, 255, 0, 0.5);
+}
+
+.chat-button:hover::before {
+  opacity: 1;
+}
+
+.chat-button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.chat-icon {
+  color: #000;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.chat-button:hover .chat-icon {
   transform: scale(1.1);
+}
+
+/* Animation pulse effect */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 20px rgba(124, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(124, 255, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 4px 20px rgba(124, 255, 0, 0.3);
+  }
+}
+
+.chat-button {
+  animation: pulse 2s infinite;
+}
+
+.chat-button:hover {
   animation: none;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 46, 60, 0.7);
+/* Responsive design */
+@media (max-width: 768px) {
+  .chat-button-container {
+    bottom: 1.5rem;
+    right: 1.5rem;
   }
-  70% {
-    box-shadow: 0 0 0 15px rgba(0, 46, 60, 0);
+
+  .chat-button {
+    width: 50px;
+    height: 50px;
   }
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 46, 60, 0);
+
+  .chat-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Dark theme compatibility */
+@media (prefers-color-scheme: dark) {
+  .chat-button {
+    background: linear-gradient(135deg, #7cff00, #5ac000);
   }
 }

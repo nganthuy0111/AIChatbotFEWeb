@@ -27,10 +27,10 @@ const TeamSizeCard = () => {
   const chartRef = useRef(null);
 
   const lineChartData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    labels: ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
     datasets: [
       {
-        label: "Daily Sales",
+        label: "Doanh số hàng ngày",
         data: [40, 20, 30, 50, 25, 60, 45],
         borderColor: "#4caf50",
         backgroundColor: "rgba(76, 175, 80, 0.2)",
@@ -43,7 +43,7 @@ const TeamSizeCard = () => {
     responsive: true,
     plugins: {
       legend: { position: "top" },
-      title: { display: true, text: "Daily Sales" },
+      title: { display: true, text: "Doanh số hàng ngày" },
     },
   };
 
@@ -66,10 +66,10 @@ const TeamSizeCard = () => {
         height: "auto",
       }}
     >
-      <Typography variant="h6">Team Size</Typography>
+      <Typography variant="h6">Kích thước nhóm</Typography>
       <Typography variant="h4">401/500GB</Typography>
       <Typography variant="body2" color="text.secondary">
-        Get more space
+        Lấy thêm dung lượng
       </Typography>
       <Line data={lineChartData} options={lineChartOptions} ref={chartRef} />
     </Paper>

@@ -20,7 +20,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! I'm EduLawAI, how can I help you today?",
+      text: "Xin chào! Tôi là EduLawAI, tôi có thể giúp gì cho bạn hôm nay?",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -49,7 +49,7 @@ const Chat = () => {
       // Add bot response
       const botMessage = {
         id: messages.length + 2,
-        text: "This is a sample response. Integrate your API here.",
+        text: "Đây là phản hồi mẫu. Tích hợp API của bạn tại đây.",
         sender: "bot",
         timestamp: new Date(),
       };
@@ -62,7 +62,7 @@ const Chat = () => {
     setMessages([
       {
         id: 1,
-        text: "Hi! I'm EduLawAI, how can I help you today?",
+        text: "Xin chào! Tôi là EduLawAI, tôi có thể giúp gì cho bạn hôm nay?",
         sender: "bot",
         timestamp: new Date(),
       },
@@ -71,7 +71,7 @@ const Chat = () => {
   };
 
   const formatTime = (date) => {
-    return new Intl.DateTimeFormat("en-US", {
+    return new Intl.DateTimeFormat("vi-VN", {
       hour: "2-digit",
       minute: "2-digit",
     }).format(date);
@@ -93,7 +93,7 @@ const Chat = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h5">Chat with EduLawAI</Typography>
+            <Typography variant="h5">Trò chuyện với EduLawAI</Typography>
           </Box>
 
           <Paper className="chat-box">
@@ -143,7 +143,7 @@ const Chat = () => {
               <TextField
                 fullWidth
                 variant="outlined"
-                placeholder="Type your message..."
+                placeholder="Nhập tin nhắn của bạn..."
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 className="chat-input"

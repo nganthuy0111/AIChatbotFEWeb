@@ -17,7 +17,12 @@ const HeaderAdmin = ({ handleDrawerToggle }) => {
   return (
     <AppBar
       position="static"
-      sx={{ backgroundColor: "#fff", color: "#000", boxShadow: 1 }}
+      sx={{
+        backgroundColor: "#232323",
+        color: "#cdff09",
+        boxShadow: "0 2px 8px #cdff0933",
+        borderBottom: "1px solid #cdff09",
+      }}
     >
       <Toolbar>
         <IconButton
@@ -33,26 +38,44 @@ const HeaderAdmin = ({ handleDrawerToggle }) => {
           variant="h6"
           noWrap
           component="div"
-          sx={{ flexGrow: 1 }}
+          sx={{ flexGrow: 1, color: "#cdff09" }}
         ></Typography>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <InputBase
-            placeholder="Search…"
+            placeholder="Tìm kiếm…"
             inputProps={{ "aria-label": "search" }}
             sx={{
               ml: 1,
               p: "2px 4px",
-              border: "1px solid #ccc",
+              border: "1px solid #cdff09",
               borderRadius: 1,
+              color: "#fff",
+              "& .MuiInputBase-input": {
+                color: "#fff",
+              },
+              "& .MuiInputBase-input::placeholder": {
+                color: "#d4ff33",
+                opacity: 0.7,
+              },
             }}
-            startAdornment={<SearchIcon sx={{ ml: 1, mr: 1 }} />}
+            startAdornment={
+              <SearchIcon sx={{ ml: 1, mr: 1, color: "#cdff09" }} />
+            }
           />
-          <IconButton color="inherit" sx={{ ml: 2 }}>
-            <Badge badgeContent={1} color="error">
+          <IconButton color="inherit" sx={{ ml: 2, color: "#cdff09" }}>
+            <Badge
+              badgeContent={1}
+              sx={{
+                "& .MuiBadge-badge": {
+                  backgroundColor: "#cdff09",
+                  color: "#181818",
+                },
+              }}
+            >
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit" sx={{ ml: 2 }}>
+          <IconButton color="inherit" sx={{ ml: 2, color: "#cdff09" }}>
             <AccountCircleIcon />
           </IconButton>
         </Box>

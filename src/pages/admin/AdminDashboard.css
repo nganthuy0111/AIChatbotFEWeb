@@ -34,17 +34,19 @@
 }
 
 .dashboard-card {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 2px 8px #cdff0933 !important;
   transition: all 0.3s ease-in-out !important;
   height: 100%;
-  background: #fff;
+  background: #232323 !important;
   border-radius: 12px !important;
   padding: 16px;
+  border: 1px solid #cdff09;
 }
 
 .dashboard-card:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 8px 16px #cdff0933 !important;
   transform: translateY(-2px);
+  border-color: #d4ff33;
 }
 
 .dashboard-card .MuiCardContent-root {
@@ -62,6 +64,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: #cdff09;
 }
 
 .dashboard-card h4 span {
@@ -73,6 +76,8 @@
   min-height: 450px;
   display: flex;
   flex-direction: column;
+  background: #232323 !important;
+  border: 1px solid #cdff09;
 }
 
 .chart-card .MuiCardContent-root {
@@ -94,11 +99,16 @@
   margin-top: 12px;
 }
 
+.MuiLinearProgress-bar {
+  background-color: #cdff09 !important;
+}
+
 .MuiTabs-root {
   min-height: 48px;
   border-radius: 24px;
-  background: #f5f5f5;
+  background: #181818;
   padding: 4px;
+  border: 1px solid #cdff09;
 }
 
 .MuiTab-root {
@@ -107,13 +117,13 @@
   min-width: 120px !important;
   min-height: 40px !important;
   border-radius: 20px !important;
-  color: #666 !important;
+  color: #fff !important;
 }
 
 .MuiTab-root.Mui-selected {
-  background: #fff;
-  color: #000 !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background: #cdff09;
+  color: #181818 !important;
+  box-shadow: 0 2px 8px #cdff0933;
 }
 
 .MuiTabs-indicator {
@@ -131,6 +141,7 @@
 .market-overview-header h6 {
   font-size: 1.25rem;
   font-weight: 600;
+  color: #cdff09;
 }
 
 /* Traffic Sources (Pie Chart) */
@@ -149,17 +160,17 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f5f5f5;
+  background: #181818;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: #cdff09;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #999;
+  background: #d4ff33;
 }
 
 /* Task list styles */
@@ -168,7 +179,7 @@
 }
 
 .task-item:hover {
-  background-color: rgba(0, 0, 0, 0.02);
+  background-color: #232323;
 }
 
 /* Responsive adjustments */
@@ -205,11 +216,17 @@
 
   .MuiTab-root {
     min-width: 80px !important;
-    padding: 6px 12px !important;
+    font-size: 0.875rem !important;
   }
 
   .dashboard-card h4 {
     font-size: 1.5rem;
+  }
+
+  .market-overview-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }
 
@@ -223,21 +240,21 @@
   }
 
   .chart-container {
-    min-height: 200px;
+    min-height: 250px;
   }
 
   .MuiTab-root {
-    min-width: 60px !important;
-    padding: 6px 8px !important;
-    font-size: 0.8rem !important;
+    min-width: 80px !important;
+    font-size: 0.875rem !important;
   }
 
   .dashboard-card h4 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .market-overview-header {
     flex-direction: column;
-    gap: 16px;
+    align-items: flex-start;
+    gap: 8px;
   }
 }

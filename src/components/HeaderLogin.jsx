@@ -3,7 +3,9 @@ function Header() {
   return (
     <div className="header-container">
       <img src="/src/assets/edulawai.jpg" alt="" />
-      <p>EduLawAI</p>
+      <p>
+        <strong>EduLawAI</strong>
+      </p>
     </div>
   );
 }

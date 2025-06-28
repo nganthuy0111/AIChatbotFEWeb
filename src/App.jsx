@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
@@ -10,6 +10,9 @@ import ChatButton from "./components/ChatButton";
 import Footer from "./components/Footer";
 
 function App() {
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith("/admin");
+
   return (
     <div className="App">
       <Routes>
@@ -21,7 +24,7 @@ function App() {
         <Route path="/admin/users" element={<UserManagement />} />
       </Routes>
       <ChatButton />
-      <Footer />
+      {!isAdminPage && <Footer />}
     </div>
   );
 }

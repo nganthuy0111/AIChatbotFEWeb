@@ -11,19 +11,113 @@
 }
 
 .header {
-  background-color: #002e3c !important;
-  transition: all 0.3s ease-in-out !important;
-}
-
-.header-scrolled {
-  background-color: rgba(120, 188, 196, 0.98) !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.8);
   backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(124, 255, 0, 0.1);
 }
 
-.toolbar {
+.header-content {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 1rem !important;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: #cdff09;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  gap: 0.5rem;
+}
+.logo a:hover {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #cdff09;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.notifications,
+.profile {
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(205, 255, 9, 0.1);
+}
+
+.notifications:hover,
+.profile:hover {
+  color: #fff;
+  background: rgba(124, 255, 0, 0.1);
+  transform: translateY(-2px);
 }
 
 .logo-container {
@@ -175,5 +269,19 @@
 
   .right-section {
     gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    padding: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .logo a {
+    font-size: 1.5rem;
   }
 }

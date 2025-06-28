@@ -7,25 +7,25 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { useNavigate, useLocation } from "react-router-dom";
+// import { useNavigate, useLocation } from "react-router-dom";
 
-const SidebarAdmin = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+const SidebarAdmin = ({ onSectionChange }) => {
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
   const sidebarItems = [
-    { text: "Dashboard", icon: "📊", path: "/admin/dashboard" },
-    { text: "User Management", icon: "👤", path: "/admin/users" },
-    { text: "Legal Management", icon: "📋", path: "/admin/legal" },
-    { text: "Clause Management", icon: "✍️", path: "/admin/clause" },
-    { text: "Q&A Management", icon: "⭐", path: "/admin/qa" },
-    { text: "Maps", icon: "🗺️", path: "/admin/maps" },
-    { text: "Notifications", icon: "🔔", path: "/admin/notifications" },
+    { text: "Bảng điều khiển", icon: "📊", section: "dashboard" },
+    { text: "Quản lý người dùng", icon: "👤", section: "users" },
+    { text: "Quản lý pháp lý", icon: "📋", section: "legal" },
+    { text: "Quản lý điều khoản", icon: "✍️", section: "clause" },
+    { text: "Quản lý Q&A", icon: "⭐", section: "qa" },
+    { text: "Bản đồ", icon: "🗺️", section: "maps" },
+    { text: "Thông báo", icon: "🔔", section: "notifications" },
   ];
 
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
+  // const handleNavigation = (path) => {
+  //   navigate(path);
+  // };
 
   return (
     <Drawer
@@ -36,7 +36,9 @@ const SidebarAdmin = () => {
         "& .MuiDrawer-paper": {
           width: 240,
           boxSizing: "border-box",
-          backgroundColor: "#f7f8f3",
+          backgroundColor: "#181818",
+          borderRight: "1px solid #cdff09",
+          color: "#fff",
         },
       }}
     >
@@ -49,18 +51,30 @@ const SidebarAdmin = () => {
           mr: 2,
           textDecoration: "none",
           p: 2,
+          borderBottom: "1px solid #cdff09",
         }}
       >
         <Box
           component="img"
           src="/src/assets/edulawai.jpg"
           alt="EduLawAI"
-          sx={{ height: 40, width: 40, objectFit: "contain" }}
+          sx={{
+            height: 40,
+            width: 40,
+            objectFit: "contain",
+            borderRadius: "8px",
+            boxShadow: "0 0 8px #cdff0933",
+          }}
         />
         <Typography
           variant="h6"
           component="div"
-          sx={{ ml: 1, display: { xs: "none", sm: "block" } }}
+          sx={{
+            ml: 1,
+            display: { xs: "none", sm: "block" },
+            color: "#cdff09",
+            fontWeight: 600,
+          }}
         >
           EduLawAI
         </Typography>
@@ -71,11 +85,21 @@ const SidebarAdmin = () => {
             <ListItem
               button
               key={item.text}
-              onClick={() => handleNavigation(item.path)}
+              onClick={() => onSectionChange(item.section)}
               sx={{
-                "&:hover": { backgroundColor: "#e0e0e0" },
-                backgroundColor:
-                  location.pathname === item.path ? "#e0e0e0" : "transparent",
+                "&:hover": {
+                  backgroundColor: "#232323",
+                  borderLeft: "3px solid #cdff09",
+                },
+                // backgroundColor:
+                //   location.pathname === item.path ? "#232323" : "transparent",
+                // borderLeft: location.pathname === item.path ? "3px solid #cdff09" : "3px solid transparent",
+                // color: location.pathname === item.path ? "#cdff09" : "#fff",
+                transition: "all 0.3s ease",
+                // "& .MuiListItemText-primary": {
+                //   color: location.pathname === item.path ? "#cdff09" : "#fff",
+                //   fontWeight: location.pathname === item.path ? 600 : 400,
+                // },
               }}
             >
               <ListItemText primary={`${item.icon} ${item.text}`} />

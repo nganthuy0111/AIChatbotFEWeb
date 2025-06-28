@@ -23,21 +23,21 @@ const ChatSidebar = ({ onNewChat }) => {
   const chatHistory = [
     {
       id: 1,
-      title: "Educational Rights and Responsibilities",
-      preview: "What are the basic rights of students...",
-      timestamp: "2 hours ago",
+      title: "Quyền và trách nhiệm giáo dục",
+      preview: "Những quyền cơ bản của học sinh là gì...",
+      timestamp: "2 giờ trước",
     },
     {
       id: 2,
-      title: "School Regulations Query",
-      preview: "Can schools implement dress codes...",
-      timestamp: "Yesterday",
+      title: "Truy vấn quy định trường học",
+      preview: "Trường học có thể áp dụng quy định về trang phục...",
+      timestamp: "Hôm qua",
     },
     {
       id: 3,
-      title: "Teacher Certification",
-      preview: "What are the requirements for...",
-      timestamp: "2 days ago",
+      title: "Chứng chỉ giáo viên",
+      preview: "Những yêu cầu để...",
+      timestamp: "2 ngày trước",
     },
   ];
 
@@ -47,7 +47,7 @@ const ChatSidebar = ({ onNewChat }) => {
       <Box className="sidebar-header">
         <IconButton className="new-chat-button" onClick={onNewChat}>
           <AddIcon />
-          <Typography variant="button">New Chat</Typography>
+          <Typography variant="button">Cuộc trò chuyện mới</Typography>
         </IconButton>
       </Box>
 
@@ -56,7 +56,7 @@ const ChatSidebar = ({ onNewChat }) => {
         <Box className="search-box">
           <SearchIcon className="search-icon" />
           <InputBase
-            placeholder="Search conversations..."
+            placeholder="Tìm kiếm cuộc trò chuyện..."
             className="search-input"
           />
         </Box>
@@ -68,7 +68,7 @@ const ChatSidebar = ({ onNewChat }) => {
       <Box className="recent-chats">
         <Typography variant="subtitle2" className="section-title">
           <HistoryIcon className="section-icon" />
-          Recent Conversations
+          Cuộc trò chuyện gần đây
         </Typography>
         <List className="chat-list">
           {chatHistory.map((chat) => (
@@ -98,7 +98,7 @@ const ChatSidebar = ({ onNewChat }) => {
       {/* Footer */}
       <Box className="sidebar-footer">
         <Typography variant="caption" className="footer-text">
-          Clear all conversations
+          Xóa tất cả cuộc trò chuyện
         </Typography>
       </Box>
     </Box>

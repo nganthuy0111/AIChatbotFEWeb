@@ -27,10 +27,10 @@ const CompletedTasksCard = () => {
   const chartRef = useRef(null);
 
   const lineChartData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    labels: ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
     datasets: [
       {
-        label: "Daily Sales",
+        label: "Doanh số hàng ngày",
         data: [40, 20, 30, 50, 25, 60, 45],
         borderColor: "#4caf50",
         backgroundColor: "rgba(76, 175, 80, 0.2)",
@@ -43,7 +43,7 @@ const CompletedTasksCard = () => {
     responsive: true,
     plugins: {
       legend: { position: "top" },
-      title: { display: true, text: "Last Campaign Performance" },
+      title: { display: true, text: "Hiệu suất chiến dịch cuối" },
     },
   };
 
@@ -64,10 +64,10 @@ const CompletedTasksCard = () => {
         color: "#ffeb3b",
       }}
     >
-      <Typography variant="h6">Completed Tasks</Typography>
-      <Typography variant="h4">Last Campaign Performance</Typography>
+      <Typography variant="h6">Nhiệm vụ đã hoàn thành</Typography>
+      <Typography variant="h4">Hiệu suất chiến dịch cuối</Typography>
       <Typography variant="body2" color="text.secondary">
-        Campaign sent 2 days ago
+        Chiến dịch đã gửi 2 ngày trước
       </Typography>
       <Line data={lineChartData} options={lineChartOptions} ref={chartRef} />
     </Paper>
