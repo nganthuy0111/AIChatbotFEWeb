@@ -162,10 +162,14 @@ const AdminDashboard = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Card className="dashboard-card">
                   <CardContent>
-                    <Typography color="textSecondary" gutterBottom>
+                    <Typography color="#fff" gutterBottom>
                       Tỷ lệ chuyển đổi
                     </Typography>
-                    <Typography variant="h4" component="div" sx={{ mb: 1 }}>
+                    <Typography
+                      variant="h4"
+                      component="div"
+                      sx={{ mb: 1, color: "#fff" }}
+                    >
                       32.53%
                       <Typography
                         component="span"
@@ -181,10 +185,14 @@ const AdminDashboard = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Card className="dashboard-card">
                   <CardContent>
-                    <Typography color="textSecondary" gutterBottom>
+                    <Typography color="#fff" gutterBottom>
                       Tổng người dùng
                     </Typography>
-                    <Typography variant="h4" component="div">
+                    <Typography
+                      variant="h4"
+                      component="div"
+                      sx={{ color: "#fff" }}
+                    >
                       7,682
                       <Typography
                         component="span"
@@ -204,10 +212,14 @@ const AdminDashboard = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Card className="dashboard-card">
                   <CardContent>
-                    <Typography color="textSecondary" gutterBottom>
+                    <Typography color="#fff" gutterBottom>
                       Thời gian trung bình
                     </Typography>
-                    <Typography variant="h4" component="div">
+                    <Typography
+                      variant="h4"
+                      component="div"
+                      sx={{ color: "#fff" }}
+                    >
                       2m:35s
                       <Typography
                         component="span"
@@ -227,10 +239,14 @@ const AdminDashboard = () => {
               <Grid item xs={12} sm={6} md={3}>
                 <Card className="dashboard-card">
                   <CardContent>
-                    <Typography color="textSecondary" gutterBottom>
+                    <Typography color="#fff" gutterBottom>
                       Tỷ lệ thoát
                     </Typography>
-                    <Typography variant="h4" component="div">
+                    <Typography
+                      variant="h4"
+                      component="div"
+                      sx={{ color: "#fff" }}
+                    >
                       68.8%
                       <Typography
                         component="span"
@@ -262,18 +278,37 @@ const AdminDashboard = () => {
                         mb: 2,
                       }}
                     >
-                      <Typography variant="h6">Tổng quan thị trường</Typography>
+                      <Typography variant="h6" sx={{ color: "#fff" }}>
+                        Tổng quan thị trường
+                      </Typography>
                       <Box>
-                        <Tabs value={currentTab} onChange={handleTabChange}>
-                          <Tab label="Tổng quan" />
-                          <Tab label="Phân tích" />
-                          <Tab label="Nhân khẩu học" />
-                          <Tab label="Thêm" />
+                        <Tabs
+                          value={currentTab}
+                          onChange={handleTabChange}
+                          textColor="inherit"
+                          TabIndicatorProps={{ style: { background: "#fff" } }}
+                        >
+                          <Tab label="Tổng quan" sx={{ color: "#fff" }} />
+                          <Tab label="Phân tích" sx={{ color: "#fff" }} />
+                          <Tab label="Nhân khẩu học" sx={{ color: "#fff" }} />
+                          <Tab label="Thêm" sx={{ color: "#fff" }} />
                         </Tabs>
                       </Box>
                     </Box>
                     <Box className="chart-container">
-                      <Line data={lineChartData} options={chartOptions} />
+                      <Line
+                        data={lineChartData}
+                        options={{
+                          ...chartOptions,
+                          plugins: {
+                            ...chartOptions.plugins,
+                            legend: {
+                              ...chartOptions.plugins.legend,
+                              labels: { color: "#fff" },
+                            },
+                          },
+                        }}
+                      />
                     </Box>
                   </CardContent>
                 </Card>
@@ -284,7 +319,23 @@ const AdminDashboard = () => {
                 <Card className="dashboard-card chart-card">
                   <CardContent>
                     <Box sx={{ height: 300 }}>
-                      <Pie data={pieChartData} options={pieChartOptions} />
+                      <Pie
+                        data={pieChartData}
+                        options={{
+                          ...pieChartOptions,
+                          plugins: {
+                            ...pieChartOptions.plugins,
+                            legend: {
+                              ...pieChartOptions.plugins.legend,
+                              labels: { color: "#fff" },
+                            },
+                            title: {
+                              ...pieChartOptions.plugins.title,
+                              color: "#fff",
+                            },
+                          },
+                        }}
+                      />
                     </Box>
                   </CardContent>
                 </Card>

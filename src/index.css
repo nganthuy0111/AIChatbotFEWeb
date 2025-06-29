@@ -17,3 +17,12 @@ body {
 body {
   font-family: "Roboto", sans-serif;
 }
+
+/* Đổi màu placeholder thành trắng cho input (kể cả disabled) trong dialog */
+.MuiDialog-root input::placeholder,
+.MuiDialog-root input.Mui-disabled::placeholder,
+.MuiDialog-root textarea::placeholder,
+.MuiDialog-root textarea.Mui-disabled::placeholder {
+  color: #fff !important;
+  opacity: 1 !important;
+}

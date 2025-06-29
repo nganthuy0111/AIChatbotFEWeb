@@ -315,13 +315,13 @@ const UserManagement = () => {
         fullWidth
         PaperProps={{ sx: { background: "#232323", color: "#fff" } }}
       >
-        <DialogTitle sx={{ color: "#cdff09" }}>
+        <DialogTitle sx={{ background: "#181818", color: "#fff" }}>
           {dialogMode === "add" && "Thêm người dùng mới"}
           {dialogMode === "edit" && "Sửa người dùng"}
           {dialogMode === "view" && "Chi tiết người dùng"}
         </DialogTitle>
         <form onSubmit={handleSubmit}>
-          <DialogContent>
+          <DialogContent sx={{ color: "#fff" }}>
             <Box sx={{ display: "flex", justifyContent: "center", mb: 2 }}>
               <Avatar
                 src={formData.image || DEFAULT_AVT}
@@ -329,93 +329,176 @@ const UserManagement = () => {
                 sx={{ width: 64, height: 64, border: "2px solid #cdff09" }}
               />
             </Box>
-            <TextField
-              margin="dense"
-              name="userName"
-              label="Tên"
-              type="text"
-              fullWidth
-              value={formData.userName}
-              onChange={handleInputChange}
-              required
-              disabled={dialogMode === "view"}
-              InputProps={{ style: { color: "#fff" } }}
-              InputLabelProps={{ style: { color: "#d4ff33" } }}
-              sx={{ input: { color: "#fff" } }}
-            />
-            <TextField
-              margin="dense"
-              name="userEmail"
-              label="Email"
-              type="email"
-              fullWidth
-              value={formData.userEmail}
-              onChange={handleInputChange}
-              required
-              disabled={dialogMode === "view"}
-              InputProps={{ style: { color: "#fff" } }}
-              InputLabelProps={{ style: { color: "#d4ff33" } }}
-              sx={{ input: { color: "#fff" } }}
-            />
-            {dialogMode !== "view" && (
-              <TextField
-                margin="dense"
-                name="password"
-                label="Mật khẩu"
-                type="password"
-                fullWidth
-                value={formData.password}
+            <div style={{ marginBottom: 16 }}>
+              <label
+                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
+              >
+                Tên *
+              </label>
+              <input
+                type="text"
+                name="userName"
+                value={formData.userName}
                 onChange={handleInputChange}
-                required={dialogMode === "add"}
-                helperText={
-                  dialogMode === "edit" ? "Để trống nếu không đổi mật khẩu" : ""
-                }
-                InputProps={{ style: { color: "#fff" } }}
-                InputLabelProps={{ style: { color: "#d4ff33" } }}
-                sx={{ input: { color: "#fff" } }}
+                placeholder="Nhập tên người dùng"
+                required
+                disabled={dialogMode === "view"}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  borderRadius: 6,
+                  border: "1px solid #444",
+                  background: "#181818",
+                  color: "#fff",
+                  fontSize: 16,
+                  marginBottom: 8,
+                  outline: "none",
+                }}
               />
+            </div>
+            <div style={{ marginBottom: 16 }}>
+              <label
+                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
+              >
+                Email *
+              </label>
+              <input
+                type="email"
+                name="userEmail"
+                value={formData.userEmail}
+                onChange={handleInputChange}
+                placeholder="admin@example.com"
+                required
+                disabled={dialogMode === "view"}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  borderRadius: 6,
+                  border: "1px solid #444",
+                  background: "#181818",
+                  color: "#fff",
+                  fontSize: 16,
+                  marginBottom: 8,
+                  outline: "none",
+                }}
+              />
+            </div>
+            {dialogMode !== "view" && (
+              <div style={{ marginBottom: 16 }}>
+                <label
+                  style={{
+                    color: "#cdff09",
+                    display: "block",
+                    marginBottom: 4,
+                  }}
+                >
+                  Mật khẩu *
+                </label>
+                <input
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  placeholder={
+                    dialogMode === "edit"
+                      ? "Để trống nếu không đổi mật khẩu"
+                      : "Nhập mật khẩu"
+                  }
+                  required={dialogMode === "add"}
+                  style={{
+                    width: "100%",
+                    padding: "10px",
+                    borderRadius: 6,
+                    border: "1px solid #444",
+                    background: "#181818",
+                    color: "#fff",
+                    fontSize: 16,
+                    marginBottom: 8,
+                    outline: "none",
+                  }}
+                />
+              </div>
             )}
-            <TextField
-              margin="dense"
-              name="image"
-              label="URL ảnh đại diện"
-              type="text"
-              fullWidth
-              value={formData.image}
-              onChange={handleInputChange}
-              disabled={dialogMode === "view"}
-              InputProps={{ style: { color: "#fff" } }}
-              InputLabelProps={{ style: { color: "#d4ff33" } }}
-              sx={{ input: { color: "#fff" } }}
-            />
-            <TextField
-              margin="dense"
-              name="userStatus"
-              label="Trạng thái"
-              type="text"
-              fullWidth
-              value={formData.userStatus}
-              onChange={handleInputChange}
-              required
-              disabled={dialogMode === "view"}
-              InputProps={{ style: { color: "#fff" } }}
-              InputLabelProps={{ style: { color: "#d4ff33" } }}
-              sx={{ input: { color: "#fff" } }}
-            />
-            <TextField
-              margin="dense"
-              name="role"
-              label="Vai trò"
-              type="text"
-              fullWidth
-              value={formData.role}
-              onChange={handleInputChange}
-              required
-              disabled={dialogMode === "view"}
-              InputProps={{ style: { color: "#fff" } }}
-              InputLabelProps={{ style: { color: "#d4ff33" } }}
-              sx={{ input: { color: "#fff" } }}
-            />
+            <div style={{ marginBottom: 16 }}>
+              <label
+                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
+              >
+                URL ảnh đại diện
+              </label>
+              <input
+                type="text"
+                name="image"
+                value={formData.image}
+                onChange={handleInputChange}
+                placeholder="URL ảnh đại diện"
+                disabled={dialogMode === "view"}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  borderRadius: 6,
+                  border: "1px solid #444",
+                  background: "#181818",
+                  color: "#fff",
+                  fontSize: 16,
+                  marginBottom: 8,
+                  outline: "none",
+                }}
+              />
+            </div>
+            <div style={{ marginBottom: 16 }}>
+              <label
+                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
+              >
+                Trạng thái *
+              </label>
+              <input
+                type="text"
+                name="userStatus"
+                value={formData.userStatus}
+                onChange={handleInputChange}
+                placeholder="Active"
+                required
+                disabled={dialogMode === "view"}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  borderRadius: 6,
+                  border: "1px solid #444",
+                  background: "#181818",
+                  color: "#fff",
+                  fontSize: 16,
+                  marginBottom: 8,
+                  outline: "none",
+                }}
+              />
+            </div>
+            <div style={{ marginBottom: 16 }}>
+              <label
+                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
+              >
+                Vai trò *
+              </label>
+              <input
+                type="text"
+                name="role"
+                value={formData.role}
+                onChange={handleInputChange}
+                placeholder="Admin/User"
+                required
+                disabled={dialogMode === "view"}
+                style={{
+                  width: "100%",
+                  padding: "10px",
+                  borderRadius: 6,
+                  border: "1px solid #444",
+                  background: "#181818",
+                  color: "#fff",
+                  fontSize: 16,
+                  marginBottom: 8,
+                  outline: "none",
+                }}
+              />
+            </div>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseDialog}>Đóng</Button>

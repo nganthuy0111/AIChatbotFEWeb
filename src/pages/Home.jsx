@@ -34,8 +34,8 @@ function Home() {
             <Link to="/login" className="btn-primary">
               Đăng nhập
             </Link>
-            <Link to="/contact" className="btn-secondary">
-              Yêu cầu Demo
+            <Link to="/search" className="btn-secondary">
+              Tra cứu
             </Link>
           </div>
         </div>

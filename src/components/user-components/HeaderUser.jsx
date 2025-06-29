@@ -20,7 +20,7 @@ function HeaderUser() {
           <Link to="/home">Trang chủ</Link>
           <Link to="/admin">Hướng dẫn</Link>
           <Link to="/about">Giới thiệu</Link>
-          <Link to="/contact">Liên hệ</Link>
+          <Link to="/search">Tra cứu</Link>
         </nav>
         <div className="header-right">
           <div className="notifications">
