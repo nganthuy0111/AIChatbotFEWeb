@@ -35,6 +35,8 @@ import {
 import SidebarAdmin from "../../components/admin-components/SideBarAdmin";
 import HeaderAdmin from "../../components/admin-components/HeaderAdmin";
 import UserManagement from "./UserManagement";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 import "./AdminDashboard.css";
 
 // Register ChartJS components
@@ -50,6 +52,8 @@ ChartJS.register(
 );
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
+  const { logout } = useAuth();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [currentTab, setCurrentTab] = useState(0);
   const [selectedSection, setSelectedSection] = useState("dashboard");
@@ -62,32 +66,41 @@ const AdminDashboard = () => {
     setCurrentTab(newValue);
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
+  const handleProfile = () => {
+    navigate("/profile");
+  };
+
   // Line Chart data
   const lineChartData = {
     labels: [
-      "Th1",
-      "Th2",
-      "Th3",
-      "Th4",
-      "Th5",
-      "Th6",
-      "Th7",
-      "Th8",
-      "Th9",
-      "Th10",
-      "Th11",
-      "Th12",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
     ],
     datasets: [
       {
-        label: "Doanh thu",
+        label: "Revenue",
         data: [30, 40, 35, 50, 45, 60, 55, 65, 70, 60, 75, 80],
         borderColor: "#4A90E2",
         backgroundColor: "rgba(74, 144, 226, 0.1)",
         fill: true,
       },
       {
-        label: "Chi phí",
+        label: "Cost",
         data: [20, 25, 30, 35, 25, 40, 35, 45, 50, 40, 55, 60],
         borderColor: "#82ca9d",
         backgroundColor: "rgba(130, 202, 157, 0.1)",
@@ -98,7 +111,7 @@ const AdminDashboard = () => {
 
   // Pie Chart data
   const pieChartData = {
-    labels: ["Trực tiếp", "Mạng xã hội", "Email", "Khác"],
+    labels: ["Direct", "Social Media", "Email", "Other"],
     datasets: [
       {
         data: [35, 30, 20, 15],
@@ -143,7 +156,7 @@ const AdminDashboard = () => {
       },
       title: {
         display: true,
-        text: "Nguồn lưu lượng",
+        text: "Traffic Sources",
       },
     },
   };
@@ -154,7 +167,11 @@ const AdminDashboard = () => {
     >
       <SidebarAdmin onSectionChange={setSelectedSection} />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <HeaderAdmin handleDrawerToggle={handleDrawerToggle} />
+        <HeaderAdmin
+          handleDrawerToggle={handleDrawerToggle}
+          handleLogout={handleLogout}
+          handleProfile={handleProfile}
+        />
         {selectedSection === "dashboard" && (
           <>
             {/* Stats Cards */}
@@ -163,7 +180,7 @@ const AdminDashboard = () => {
                 <Card className="dashboard-card">
                   <CardContent>
                     <Typography color="#fff" gutterBottom>
-                      Tỷ lệ chuyển đổi
+                      Conversion Rate
                     </Typography>
                     <Typography
                       variant="h4"
@@ -186,7 +203,7 @@ const AdminDashboard = () => {
                 <Card className="dashboard-card">
                   <CardContent>
                     <Typography color="#fff" gutterBottom>
-                      Tổng người dùng
+                      Total Users
                     </Typography>
                     <Typography
                       variant="h4"
@@ -213,7 +230,7 @@ const AdminDashboard = () => {
                 <Card className="dashboard-card">
                   <CardContent>
                     <Typography color="#fff" gutterBottom>
-                      Thời gian trung bình
+                      Average Time
                     </Typography>
                     <Typography
                       variant="h4"
@@ -240,7 +257,7 @@ const AdminDashboard = () => {
                 <Card className="dashboard-card">
                   <CardContent>
                     <Typography color="#fff" gutterBottom>
-                      Tỷ lệ thoát
+                      Bounce Rate
                     </Typography>
                     <Typography
                       variant="h4"
@@ -279,7 +296,7 @@ const AdminDashboard = () => {
                       }}
                     >
                       <Typography variant="h6" sx={{ color: "#fff" }}>
-                        Tổng quan thị trường
+                        Market Overview
                       </Typography>
                       <Box>
                         <Tabs
@@ -288,10 +305,10 @@ const AdminDashboard = () => {
                           textColor="inherit"
                           TabIndicatorProps={{ style: { background: "#fff" } }}
                         >
-                          <Tab label="Tổng quan" sx={{ color: "#fff" }} />
-                          <Tab label="Phân tích" sx={{ color: "#fff" }} />
-                          <Tab label="Nhân khẩu học" sx={{ color: "#fff" }} />
-                          <Tab label="Thêm" sx={{ color: "#fff" }} />
+                          <Tab label="Overview" sx={{ color: "#fff" }} />
+                          <Tab label="Analytics" sx={{ color: "#fff" }} />
+                          <Tab label="Demographics" sx={{ color: "#fff" }} />
+                          <Tab label="More" sx={{ color: "#fff" }} />
                         </Tabs>
                       </Box>
                     </Box>

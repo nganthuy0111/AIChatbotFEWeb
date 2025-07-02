@@ -14,11 +14,11 @@ const SidebarAdmin = ({ onSectionChange }) => {
   // const location = useLocation();
 
   const sidebarItems = [
-    { text: "Bảng điều khiển", icon: "📊", section: "dashboard" },
-    { text: "Quản lý người dùng", icon: "👤", section: "users" },
-    { text: "Quản lý pháp lý", icon: "📋", section: "legal" },
-    { text: "Quản lý điều khoản", icon: "✍️", section: "clause" },
-    { text: "Quản lý Q&A", icon: "⭐", section: "qa" },
+    { text: "Dashboard", icon: "📊", section: "dashboard" },
+    { text: "User Management", icon: "👤", section: "users" },
+    { text: "Search", icon: "📋", section: "legal" },
+    { text: "Clause Management", icon: "✍️", section: "clause" },
+    { text: "Q&A Management", icon: "⭐", section: "qa" },
     { text: "Bản đồ", icon: "🗺️", section: "maps" },
     { text: "Thông báo", icon: "🔔", section: "notifications" },
   ];

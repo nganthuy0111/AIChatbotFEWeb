@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Tạo instance Axios
 const api = axios.create({
-  baseURL: "http://localhost:5171/api",
+  baseURL: "https://aichatbotlaw.onrender.com/api",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",

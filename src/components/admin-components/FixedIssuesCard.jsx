@@ -11,10 +11,10 @@ const FixedIssuesCard = () => {
         color: "#f44336",
       }}
     >
-      <Typography variant="h6">Vấn đề đã sửa</Typography>
+      <Typography variant="h6">Fixed Issues</Typography>
       <Typography variant="h4">75</Typography>
       <Typography variant="body2" color="text.secondary">
-        Theo dõi từ GitHub
+        Tracked from GitHub
       </Typography>
     </Paper>
   );

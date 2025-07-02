@@ -64,10 +64,10 @@ const CompletedTasksCard = () => {
         color: "#ffeb3b",
       }}
     >
-      <Typography variant="h6">Nhiệm vụ đã hoàn thành</Typography>
-      <Typography variant="h4">Hiệu suất chiến dịch cuối</Typography>
+      <Typography variant="h6">Completed Tasks</Typography>
+      <Typography variant="h4">120</Typography>
       <Typography variant="body2" color="text.secondary">
-        Chiến dịch đã gửi 2 ngày trước
+        Tracked from System
       </Typography>
       <Line data={lineChartData} options={lineChartOptions} ref={chartRef} />
     </Paper>

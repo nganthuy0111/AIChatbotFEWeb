@@ -6,14 +6,17 @@ import {
   Box,
   InputBase,
   Typography,
+  MenuItem,
+  Tooltip,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Badge from "@mui/material/Badge";
+import SettingsIcon from "@mui/icons-material/Settings";
 
-const HeaderAdmin = ({ handleDrawerToggle }) => {
+const HeaderAdmin = ({ handleDrawerToggle, handleLogout, handleProfile }) => {
   return (
     <AppBar
       position="static"
@@ -39,7 +42,9 @@ const HeaderAdmin = ({ handleDrawerToggle }) => {
           noWrap
           component="div"
           sx={{ flexGrow: 1, color: "#cdff09" }}
-        ></Typography>
+        >
+          Admin Dashboard
+        </Typography>
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <InputBase
             placeholder="Tìm kiếm…"
@@ -79,6 +84,13 @@ const HeaderAdmin = ({ handleDrawerToggle }) => {
             <AccountCircleIcon />
           </IconButton>
         </Box>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+        <MenuItem onClick={handleProfile}>Profile</MenuItem>
+        <Tooltip title="Open settings">
+          <IconButton>
+            <SettingsIcon />
+          </IconButton>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );

@@ -62,10 +62,10 @@ const RevenueCard = () => {
         width: "75%",
       }}
     >
-      <Typography variant="h6">Doanh thu</Typography>
-      <Typography variant="h4">$34,245</Typography>
+      <Typography variant="h6">Revenue</Typography>
+      <Typography variant="h4">$12,500</Typography>
       <Typography variant="body2" color="text.secondary">
-        24 giờ qua
+        This month
       </Typography>
       <Bar data={barChartData} options={barChartOptions} ref={chartRef} />
     </Paper>

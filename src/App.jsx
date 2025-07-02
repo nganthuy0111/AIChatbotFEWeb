@@ -5,10 +5,13 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Chat from "./pages/Chat";
 import Search from "./pages/Search";
+import About from "./pages/About";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import UserManagement from "./pages/admin/UserManagement";
 import ChatButton from "./components/ChatButton";
 import Footer from "./components/Footer";
+import Profile from "./pages/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const location = useLocation();
@@ -17,13 +20,30 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/search" element={<Search />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/users" element={<UserManagement />} />
+        <Route path="/about" element={<About />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute requiredRole="Admin">
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute requiredRole="Admin">
+              <UserManagement />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <ChatButton />
       {!isAdminPage && <Footer />}

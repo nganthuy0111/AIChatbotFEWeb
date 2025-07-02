@@ -139,7 +139,17 @@ const UserManagement = () => {
           severity: "success",
         });
       } else if (dialogMode === "add") {
-        await axios.post("/User", formData);
+        await axios.post("/User", {
+          userId: `US${Date.now()}`,
+          userName: formData.userEmail.split("@")[0] || "",
+          userEmail: formData.userEmail,
+          password: formData.password,
+          image: "",
+          userStatus: "Active",
+          role: "User",
+          createdAt: new Date().toISOString(),
+          questions: [],
+        });
         setSnackbar({
           open: true,
           message: "Thêm người dùng thành công",
@@ -194,7 +204,7 @@ const UserManagement = () => {
         }}
       >
         <Typography variant="h4" component="h1" color="#cdff09">
-          Quản lý người dùng
+          User Management
         </Typography>
         <Button
           variant="contained"
@@ -202,11 +212,11 @@ const UserManagement = () => {
           onClick={() => handleOpenDialog("add")}
           sx={{ background: "#cdff09", color: "#181818", fontWeight: 600 }}
         >
-          Thêm người dùng
+          Add User
         </Button>
       </Box>
       <TextField
-        placeholder="Tìm kiếm theo tên hoặc email..."
+        placeholder="Search by name or email..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         InputProps={{
@@ -233,14 +243,14 @@ const UserManagement = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell sx={{ color: "#fff" }}>Ảnh đại diện</TableCell>
-              <TableCell sx={{ color: "#fff" }}>Tên</TableCell>
+              <TableCell sx={{ color: "#fff" }}>Avatar</TableCell>
+              <TableCell sx={{ color: "#fff" }}>Name</TableCell>
               <TableCell sx={{ color: "#fff" }}>Email</TableCell>
-              <TableCell sx={{ color: "#fff" }}>Trạng thái</TableCell>
-              <TableCell sx={{ color: "#fff" }}>Vai trò</TableCell>
-              <TableCell sx={{ color: "#fff" }}>Ngày tạo</TableCell>
+              <TableCell sx={{ color: "#fff" }}>Status</TableCell>
+              <TableCell sx={{ color: "#fff" }}>Role</TableCell>
+              <TableCell sx={{ color: "#fff" }}>Created At</TableCell>
               <TableCell align="right" sx={{ color: "#fff" }}>
-                Hành động
+                Actions
               </TableCell>
             </TableRow>
           </TableHead>
@@ -266,19 +276,19 @@ const UserManagement = () => {
                 <TableCell align="right" sx={{ color: "#fff" }}>
                   <IconButton
                     onClick={() => handleOpenDialog("view", user)}
-                    title="Xem"
+                    title="View"
                   >
                     <VisibilityIcon sx={{ color: "#cdff09" }} />
                   </IconButton>
                   <IconButton
                     onClick={() => handleOpenDialog("edit", user)}
-                    title="Sửa"
+                    title="Edit"
                   >
                     <EditIcon sx={{ color: "#d4ff33" }} />
                   </IconButton>
                   <IconButton
                     onClick={() => handleDelete(user.userId)}
-                    title="Xóa"
+                    title="Delete"
                   >
                     <DeleteIcon sx={{ color: "#ff4d4d" }} />
                   </IconButton>
@@ -316,9 +326,9 @@ const UserManagement = () => {
         PaperProps={{ sx: { background: "#232323", color: "#fff" } }}
       >
         <DialogTitle sx={{ background: "#181818", color: "#fff" }}>
-          {dialogMode === "add" && "Thêm người dùng mới"}
-          {dialogMode === "edit" && "Sửa người dùng"}
-          {dialogMode === "view" && "Chi tiết người dùng"}
+          {dialogMode === "add" && "Add New User"}
+          {dialogMode === "edit" && "Edit User"}
+          {dialogMode === "view" && "User Details"}
         </DialogTitle>
         <form onSubmit={handleSubmit}>
           <DialogContent sx={{ color: "#fff" }}>
@@ -329,33 +339,39 @@ const UserManagement = () => {
                 sx={{ width: 64, height: 64, border: "2px solid #cdff09" }}
               />
             </Box>
-            <div style={{ marginBottom: 16 }}>
-              <label
-                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
-              >
-                Tên *
-              </label>
-              <input
-                type="text"
-                name="userName"
-                value={formData.userName}
-                onChange={handleInputChange}
-                placeholder="Nhập tên người dùng"
-                required
-                disabled={dialogMode === "view"}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: 6,
-                  border: "1px solid #444",
-                  background: "#181818",
-                  color: "#fff",
-                  fontSize: 16,
-                  marginBottom: 8,
-                  outline: "none",
-                }}
-              />
-            </div>
+            {dialogMode !== "add" && (
+              <div style={{ marginBottom: 16 }}>
+                <label
+                  style={{
+                    color: "#cdff09",
+                    display: "block",
+                    marginBottom: 4,
+                  }}
+                >
+                  Name *
+                </label>
+                <input
+                  type="text"
+                  name="userName"
+                  value={formData.userName}
+                  onChange={handleInputChange}
+                  placeholder="Enter user name"
+                  required
+                  disabled={dialogMode === "view"}
+                  style={{
+                    width: "100%",
+                    padding: "10px",
+                    borderRadius: 6,
+                    border: "1px solid #444",
+                    background: "#181818",
+                    color: "#fff",
+                    fontSize: 16,
+                    marginBottom: 8,
+                    outline: "none",
+                  }}
+                />
+              </div>
+            )}
             <div style={{ marginBottom: 16 }}>
               <label
                 style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
@@ -392,7 +408,7 @@ const UserManagement = () => {
                     marginBottom: 4,
                   }}
                 >
-                  Mật khẩu *
+                  Password *
                 </label>
                 <input
                   type="password"
@@ -401,8 +417,8 @@ const UserManagement = () => {
                   onChange={handleInputChange}
                   placeholder={
                     dialogMode === "edit"
-                      ? "Để trống nếu không đổi mật khẩu"
-                      : "Nhập mật khẩu"
+                      ? "Leave blank if not changing password"
+                      : "Enter password"
                   }
                   required={dialogMode === "add"}
                   style={{
@@ -419,96 +435,148 @@ const UserManagement = () => {
                 />
               </div>
             )}
-            <div style={{ marginBottom: 16 }}>
-              <label
-                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
-              >
-                URL ảnh đại diện
-              </label>
-              <input
-                type="text"
-                name="image"
-                value={formData.image}
-                onChange={handleInputChange}
-                placeholder="URL ảnh đại diện"
-                disabled={dialogMode === "view"}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: 6,
-                  border: "1px solid #444",
-                  background: "#181818",
-                  color: "#fff",
-                  fontSize: 16,
-                  marginBottom: 8,
-                  outline: "none",
-                }}
-              />
-            </div>
-            <div style={{ marginBottom: 16 }}>
-              <label
-                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
-              >
-                Trạng thái *
-              </label>
-              <input
-                type="text"
-                name="userStatus"
-                value={formData.userStatus}
-                onChange={handleInputChange}
-                placeholder="Active"
-                required
-                disabled={dialogMode === "view"}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: 6,
-                  border: "1px solid #444",
-                  background: "#181818",
-                  color: "#fff",
-                  fontSize: 16,
-                  marginBottom: 8,
-                  outline: "none",
-                }}
-              />
-            </div>
-            <div style={{ marginBottom: 16 }}>
-              <label
-                style={{ color: "#cdff09", display: "block", marginBottom: 4 }}
-              >
-                Vai trò *
-              </label>
-              <input
-                type="text"
-                name="role"
-                value={formData.role}
-                onChange={handleInputChange}
-                placeholder="Admin/User"
-                required
-                disabled={dialogMode === "view"}
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  borderRadius: 6,
-                  border: "1px solid #444",
-                  background: "#181818",
-                  color: "#fff",
-                  fontSize: 16,
-                  marginBottom: 8,
-                  outline: "none",
-                }}
-              />
-            </div>
+            {dialogMode !== "add" && (
+              <>
+                <div style={{ marginBottom: 16 }}>
+                  <label
+                    style={{
+                      color: "#cdff09",
+                      display: "block",
+                      marginBottom: 4,
+                    }}
+                  >
+                    Avatar URL
+                  </label>
+                  <input
+                    type="text"
+                    name="image"
+                    value={formData.image}
+                    onChange={handleInputChange}
+                    placeholder="Avatar URL"
+                    disabled={dialogMode === "view"}
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      borderRadius: 6,
+                      border: "1px solid #444",
+                      background: "#181818",
+                      color: "#fff",
+                      fontSize: 16,
+                      marginBottom: 8,
+                      outline: "none",
+                    }}
+                  />
+                </div>
+                <div style={{ marginBottom: 16 }}>
+                  <label
+                    style={{
+                      color: "#cdff09",
+                      display: "block",
+                      marginBottom: 4,
+                    }}
+                  >
+                    Status *
+                  </label>
+                  <input
+                    type="text"
+                    name="userStatus"
+                    value={formData.userStatus}
+                    onChange={handleInputChange}
+                    placeholder="Active"
+                    required
+                    disabled={dialogMode === "view"}
+                    style={{
+                      width: "100%",
+                      padding: "10px",
+                      borderRadius: 6,
+                      border: "1px solid #444",
+                      background: "#181818",
+                      color: "#fff",
+                      fontSize: 16,
+                      marginBottom: 8,
+                      outline: "none",
+                    }}
+                  />
+                </div>
+                {dialogMode === "edit" && (
+                  <div style={{ marginBottom: 16 }}>
+                    <label
+                      style={{
+                        color: "#cdff09",
+                        display: "block",
+                        marginBottom: 4,
+                      }}
+                    >
+                      Role *
+                    </label>
+                    <select
+                      name="role"
+                      value={formData.role}
+                      onChange={handleInputChange}
+                      required
+                      style={{
+                        width: "100%",
+                        padding: "10px",
+                        borderRadius: 6,
+                        border: "1px solid #444",
+                        background: "#181818",
+                        color: "#fff",
+                        fontSize: 16,
+                        marginBottom: 8,
+                        outline: "none",
+                      }}
+                    >
+                      <option value="User" style={{ color: "#000" }}>
+                        User
+                      </option>
+                      <option value="Admin" style={{ color: "#000" }}>
+                        Admin
+                      </option>
+                    </select>
+                  </div>
+                )}
+                {dialogMode === "view" && (
+                  <div style={{ marginBottom: 16 }}>
+                    <label
+                      style={{
+                        color: "#cdff09",
+                        display: "block",
+                        marginBottom: 4,
+                      }}
+                    >
+                      Role *
+                    </label>
+                    <input
+                      type="text"
+                      name="role"
+                      value={formData.role}
+                      disabled
+                      style={{
+                        width: "100%",
+                        padding: "10px",
+                        borderRadius: 6,
+                        border: "1px solid #444",
+                        background: "#181818",
+                        color: "#fff",
+                        fontSize: 16,
+                        marginBottom: 8,
+                        outline: "none",
+                      }}
+                    />
+                  </div>
+                )}
+              </>
+            )}
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleCloseDialog}>Đóng</Button>
+            <Button onClick={handleCloseDialog}>Close</Button>
             {dialogMode !== "view" && (
               <Button
                 type="submit"
                 variant="contained"
                 sx={{ background: "#cdff09", color: "#181818" }}
               >
-                {dialogMode === "add" ? "Tạo" : "Cập nhật"}
+                {dialogMode === "add" ? "Create" : "Update"}
               </Button>
             )}
           </DialogActions>

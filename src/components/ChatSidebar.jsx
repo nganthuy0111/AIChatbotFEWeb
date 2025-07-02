@@ -9,6 +9,7 @@ import {
   IconButton,
   InputBase,
   Divider,
+  Button,
 } from "@mui/material";
 import {
   Add as AddIcon,
@@ -45,21 +46,14 @@ const ChatSidebar = ({ onNewChat }) => {
     <Box className="chat-sidebar">
       {/* New Chat Button */}
       <Box className="sidebar-header">
-        <IconButton className="new-chat-button" onClick={onNewChat}>
-          <AddIcon />
-          <Typography variant="button">Cuộc trò chuyện mới</Typography>
-        </IconButton>
-      </Box>
-
-      {/* Search Bar */}
-      <Box className="search-container">
-        <Box className="search-box">
-          <SearchIcon className="search-icon" />
-          <InputBase
-            placeholder="Tìm kiếm cuộc trò chuyện..."
-            className="search-input"
-          />
-        </Box>
+        <Button
+          variant="contained"
+          onClick={onNewChat}
+          className="new-chat-button"
+          startIcon={<AddIcon />}
+        >
+          New Chat
+        </Button>
       </Box>
 
       <Divider className="sidebar-divider" />

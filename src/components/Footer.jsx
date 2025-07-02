@@ -28,13 +28,13 @@ const Footer = () => {
           <Grid item xs={12} md={4}>
             <Box className="footer-section">
               <Typography variant="h6" className="footer-title">
-                Liên hệ với chúng tôi
+                Contact Us
               </Typography>
               <Box className="contact-info">
                 <Box className="contact-item">
                   <LocationOn />
                   <Typography variant="body2">
-                    Đại học FPT, Long Thạnh Mỹ, Thành phố Thủ Đức, TP.HCM
+                    FPT University, Long Thạnh Mỹ, Thành phố Thủ Đức, TP.HCM
                   </Typography>
                 </Box>
                 <Box className="contact-item">
@@ -68,11 +68,11 @@ const Footer = () => {
 
         <Box className="footer-bottom">
           <Typography variant="body2" className="copyright">
-            © {new Date().getFullYear()} EduLawAI. Tất cả quyền được bảo lưu.
+            © 2024 EduLawAI. All rights reserved.
           </Typography>
           <Box className="legal-links">
-            <Link href="/privacy">Chính sách bảo mật</Link>
-            <Link href="/terms">Điều khoản dịch vụ</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
           </Box>
         </Box>
       </Container>

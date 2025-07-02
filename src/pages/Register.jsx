@@ -37,13 +37,13 @@ const Register = () => {
           </Box>
 
           <Typography variant="h5" className="section-title">
-            Tạo tài khoản mới
+            Create a new account
           </Typography>
 
           <Box component="form" onSubmit={handleSubmit} className="auth-form">
             <TextField
               fullWidth
-              label="Địa chỉ email"
+              label="Email address"
               variant="outlined"
               type="email"
               required
@@ -51,7 +51,7 @@ const Register = () => {
             />
             <TextField
               fullWidth
-              label="Mật khẩu"
+              label="Password"
               variant="outlined"
               type="password"
               required
@@ -63,14 +63,14 @@ const Register = () => {
               variant="contained"
               className="submit-button"
             >
-              Tiếp tục
+              Continue
             </Button>
           </Box>
 
           <Box className="auth-separator">
             <Divider>
               <Typography variant="body2" color="textSecondary">
-                HOẶC
+                OR
               </Typography>
             </Divider>
           </Box>
@@ -92,15 +92,15 @@ const Register = () => {
                   </g>
                 </svg>
               </span>
-              <span className="google-text">Tiếp tục với Google</span>
+              <span className="google-text">Continue with Google</span>
             </button>
           </Box>
 
           <Box className="auth-footer">
             <Typography variant="body2" color="textSecondary">
-              Đã có tài khoản?{" "}
+              Already have an account?{" "}
               <Link to="/" className="auth-link">
-                Đăng nhập
+                Login
               </Link>
             </Typography>
           </Box>

@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -12,7 +13,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAe00dISmaBz_6_lixsiQtEuZQKOVfyPxo",
   authDomain: "aiedulawchatbot.firebaseapp.com",
   projectId: "aiedulawchatbot",
-  storageBucket: "aiedulawchatbot.firebasestorage.app",
+  storageBucket: "aiedulawchatbot.appspot.com",
   messagingSenderId: "781017936124",
   appId: "1:781017936124:web:5af2267f41a1a0446a2779",
   measurementId: "G-0TS24V0KDK",
@@ -23,3 +24,4 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+export const storage = getStorage(app);

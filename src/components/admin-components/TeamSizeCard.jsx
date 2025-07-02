@@ -66,10 +66,10 @@ const TeamSizeCard = () => {
         height: "auto",
       }}
     >
-      <Typography variant="h6">Kích thước nhóm</Typography>
-      <Typography variant="h4">401/500GB</Typography>
+      <Typography variant="h6">Team Size</Typography>
+      <Typography variant="h4">15</Typography>
       <Typography variant="body2" color="text.secondary">
-        Lấy thêm dung lượng
+        Active members
       </Typography>
       <Line data={lineChartData} options={lineChartOptions} ref={chartRef} />
     </Paper>

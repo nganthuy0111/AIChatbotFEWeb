@@ -21,37 +21,47 @@ function Home() {
       <section className="hero-section">
         <div className="hero-content">
           <h1>
-            Tương lai của
+            The Future of
             <br />
-            Chatbot Thế hệ Mới
+            Next-Gen Chatbot
           </h1>
           <p>
-            Gặp gỡ Aidy, chatbot AI thế hệ mới được thiết kế để nâng cao cuộc
-            trò chuyện với phản hồi trực quan, tích hợp liền mạch và tự động hóa
-            mạnh mẽ.
+            Meet Aidy, the next-generation AI chatbot designed to elevate
+            conversations with intuitive responses, seamless integration, and
+            powerful automation.
           </p>
-          <div className="hero-buttons">
-            <Link to="/login" className="btn-primary">
-              Đăng nhập
-            </Link>
+          <div
+            className="hero-buttons"
+            style={{
+              justifyContent: localStorage.getItem("token")
+                ? "center"
+                : undefined,
+              display: "flex",
+            }}
+          >
+            {!localStorage.getItem("token") && (
+              <Link to="/login" className="btn-primary">
+                Login
+              </Link>
+            )}
             <Link to="/search" className="btn-secondary">
-              Tra cứu
+              Search
             </Link>
           </div>
         </div>
       </section>
 
       <section className="features-section">
-        <h2>Tính năng chính</h2>
+        <h2>Main Features</h2>
         <div className="features-grid">
           <div className="feature-card">
             <div className="feature-icon">
               <FontAwesomeIcon icon={faRobot} />
             </div>
-            <h3>AI Tiên tiến</h3>
+            <h3>Advanced AI</h3>
             <p>
-              Được hỗ trợ bởi trí tuệ nhân tạo tiên tiến cho các cuộc trò chuyện
-              tự nhiên và nhận thức ngữ cảnh.
+              Powered by advanced artificial intelligence for natural
+              conversations and contextual awareness.
             </p>
           </div>
 
@@ -59,10 +69,10 @@ function Home() {
             <div className="feature-icon">
               <FontAwesomeIcon icon={faLightbulb} />
             </div>
-            <h3>Học tập thông minh</h3>
+            <h3>Smart Learning</h3>
             <p>
-              Liên tục học hỏi và thích ứng từ các tương tác để cung cấp phản
-              hồi chính xác và liên quan hơn.
+              Continuously learns and adapts from interactions to provide more
+              accurate and relevant responses.
             </p>
           </div>
 
@@ -70,10 +80,10 @@ function Home() {
             <div className="feature-icon">
               <FontAwesomeIcon icon={faBolt} />
             </div>
-            <h3>Tích hợp nhanh</h3>
+            <h3>Quick Integration</h3>
             <p>
-              Tích hợp liền mạch với các hệ thống và quy trình làm việc hiện có
-              với thời gian thiết lập tối thiểu.
+              Seamlessly integrates with existing systems and workflows with
+              minimal setup time.
             </p>
           </div>
 
@@ -81,10 +91,10 @@ function Home() {
             <div className="feature-icon">
               <FontAwesomeIcon icon={faShieldHalved} />
             </div>
-            <h3>Bảo mật & Riêng tư</h3>
+            <h3>Security & Privacy</h3>
             <p>
-              Bảo mật cấp doanh nghiệp với mã hóa end-to-end và tuân thủ quyền
-              riêng tư dữ liệu.
+              Enterprise-grade security with end-to-end encryption and data
+              privacy compliance.
             </p>
           </div>
         </div>

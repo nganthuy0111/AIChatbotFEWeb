@@ -13,10 +13,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebase";
 import api from "../config/axios";
+import useAuth from "../hooks/useAuth";
 import "./Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -37,12 +39,6 @@ const Login = () => {
     setError("");
     setShowError(false);
 
-    // Log the request data
-    console.log("Sending login request with data:", {
-      ...formData,
-      password: "***", // Hide password in logs
-    });
-
     try {
       const response = await api.post("/Authenticate/login", {
         email: formData.email,
@@ -51,22 +47,40 @@ const Login = () => {
         twoFactorRecoveryCode: null,
       });
 
-      console.log("Login response:", response.data);
-
       if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-        navigate("/home");
+        let userRole =
+          response.data.role ||
+          response.data.user?.role ||
+          response.data.userRole ||
+          "User";
+
+        const userEmail = formData.email.toLowerCase();
+        const isAdminEmail =
+          userEmail.includes("admin") ||
+          userEmail.includes("administrator") ||
+          userEmail === "admin@example.com" ||
+          userEmail === "admin@gmail.com";
+
+        if (
+          isAdminEmail ||
+          response.data.isAdmin ||
+          response.data.user?.isAdmin
+        ) {
+          userRole = "Admin";
+        }
+
+        login(response.data.token, userRole, response.data.userId);
+
+        if (userRole === "Admin" || userRole === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/home");
+        }
       } else {
         setError("Đăng nhập thành công nhưng không nhận được token");
         setShowError(true);
       }
     } catch (error) {
-      console.error("Login error details:", {
-        message: error.message,
-        response: error.response?.data,
-        status: error.response?.status,
-      });
-
       let errorMessage = "Đã xảy ra lỗi trong quá trình đăng nhập";
 
       if (error.response?.data?.message) {
@@ -88,10 +102,9 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      console.log("Google login successful:", result.user);
+      login("google-token", "User", result.user.uid);
       navigate("/home");
     } catch (error) {
-      console.error("Error during Google login:", error);
       setError(error.message);
       setShowError(true);
     }
