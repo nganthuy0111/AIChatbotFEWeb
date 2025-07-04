@@ -16,17 +16,16 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(124, 255, 0, 0.1);
+  background: rgba(10, 10, 10, 0.92);
+  border-bottom: 1px solid rgba(124, 255, 0, 0.08);
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  max-width: 1400px;
+  padding: 0.7rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -43,9 +42,6 @@
 .logo {
   display: flex;
   align-items: center;
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
   gap: 0.5rem;
 }
 .logo a:hover {
@@ -53,73 +49,37 @@
   transition: color 0.3s ease;
 }
 .logo img {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: cover;
-  cursor: pointer;
 }
 .nav-links {
   display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  margin: 0 auto;
+  gap: 2rem;
 }
 
 .nav-links a {
+  color: #fff;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
   font-size: 1rem;
-  transition: all 0.3s ease;
-  padding: 0.5rem 0;
-  position: relative;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #cdff09;
-  transition: width 0.3s ease;
+  transition: color 0.2s;
 }
 
 .nav-links a:hover {
-  color: #fff;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
+  color: #cdff09;
 }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .notifications,
 .profile {
-  display: flex;
-  align-items: center;
-  color: rgba(255, 255, 255, 0.8);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: auto;
-  height: 40px;
-  justify-content: center;
-  border-radius: 50%;
-  background: none;
-}
-
-.notifications:hover,
-.profile:hover {
-  color: #fff;
-  background: rgba(124, 255, 0, 0.1);
-  transform: translateY(-2px);
+  display: none;
 }
 
 .logo-container {
@@ -276,11 +236,12 @@
 
 @media (max-width: 768px) {
   .header-content {
-    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
   }
-
   .nav-links {
-    display: none;
+    gap: 1.2rem;
   }
 
   .logo a {
@@ -288,43 +249,39 @@
   }
 }
 
-.header-btn {
-  display: inline-block;
-  margin-left: 0.5rem;
-  padding: 0.45rem 1.3rem;
-  border-radius: 999px;
-  background: #d4ff00;
-  color: #181818;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  transition: background 0.2s, color 0.2s, transform 0.15s;
-  box-shadow: none;
-  vertical-align: middle;
-}
-
-.header-btn:hover {
-  background: #c0f900;
-  color: #181818;
-  transform: scale(1.04);
-}
-
+.header-btn,
 .header-signin {
-  margin-left: 1.2rem;
-  color: #d4ff00;
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
   background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  vertical-align: middle;
-  transition: color 0.2s;
+  border: 1px solid #cdff09;
+  color: #cdff09;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.header-btn:hover,
+.header-signin:hover {
+  background: #cdff09;
+  color: #222;
 }
 
-.header-signin:hover {
-  color: #fff200;
+/* Custom gray scrollbar for all browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  background: #e0e0e0;
+}
+::-webkit-scrollbar-thumb {
+  background: #b0b0b0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #b0b0b0 #e0e0e0;
 }

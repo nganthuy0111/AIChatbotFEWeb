@@ -2,20 +2,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./HeaderUser.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBell,
-  faUser,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { MenuItem } from "@mui/material";
+import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth";
 
 function HeaderUser() {
   const navigate = useNavigate();
-  const { isAuthenticated, userRole, logout } = useAuth();
+  const { isAuthenticated, logout } = useAuth();
 
   const handleProfileClick = () => {
-    // Chuyển hướng sang trang profile (cần tạo route nếu chưa có)
     navigate("/profile");
   };
 
@@ -37,47 +31,35 @@ function HeaderUser() {
         </div>
         <nav className="nav-links">
           <Link to="/home">Home</Link>
-          <Link to="/admin">Instructions</Link>
-          <Link to="/about">About</Link>
           <Link to="/search">Search</Link>
+          <Link to="/about">About</Link>
         </nav>
         <div className="header-right">
-          <div className="notifications">
-            <FontAwesomeIcon icon={faBell} />
-          </div>
-          <div className="profile">
-            {isAuthenticated ? (
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                {userRole && (
-                  <span style={{ color: "#fff", fontSize: "14px" }}>
-                    {userRole}
-                  </span>
-                )}
-                <FontAwesomeIcon
-                  icon={faUser}
-                  style={{ cursor: "pointer" }}
-                  onClick={handleProfileClick}
-                />
-                <FontAwesomeIcon
-                  icon={faSignOutAlt}
-                  style={{ cursor: "pointer", color: "#ff6b6b" }}
-                  onClick={handleLogout}
-                  title="Đăng xuất"
-                />
-              </div>
-            ) : (
-              <>
-                <Link to="/login" className="header-btn">
-                  Login
-                </Link>
-                <Link to="/register" className="header-signin">
-                  Sign In
-                </Link>
-              </>
-            )}
-          </div>
+          {isAuthenticated ? (
+            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+              <FontAwesomeIcon
+                icon={faUser}
+                style={{ cursor: "pointer" }}
+                onClick={handleProfileClick}
+                title="Profile"
+              />
+              <FontAwesomeIcon
+                icon={faSignOutAlt}
+                style={{ cursor: "pointer", color: "#ff6b6b" }}
+                onClick={handleLogout}
+                title="Logout"
+              />
+            </div>
+          ) : (
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <Link to="/login" className="header-btn">
+                Login
+              </Link>
+              <Link to="/register" className="header-signin">
+                Sign Up
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </header>
