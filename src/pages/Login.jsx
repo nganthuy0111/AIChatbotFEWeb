@@ -8,6 +8,7 @@ import {
   Divider,
   Alert,
   Snackbar,
+  CircularProgress,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
@@ -25,6 +26,7 @@ const Login = () => {
   });
   const [error, setError] = useState("");
   const [showError, setShowError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -38,6 +40,7 @@ const Login = () => {
     e.preventDefault();
     setError("");
     setShowError(false);
+    setLoading(true);
 
     try {
       const response = await api.post("/Authenticate/login", {
@@ -96,10 +99,13 @@ const Login = () => {
 
       setError(errorMessage);
       setShowError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleGoogleLogin = async () => {
+    setLoading(true);
     try {
       const result = await signInWithPopup(auth, googleProvider);
       login("google-token", "User", result.user.uid);
@@ -107,6 +113,8 @@ const Login = () => {
     } catch (error) {
       setError(error.message);
       setShowError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -136,6 +144,7 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
+              disabled={loading}
             />
             <TextField
               fullWidth
@@ -147,14 +156,19 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
+              disabled={loading}
             />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               className="submit-button"
+              disabled={loading}
+              startIcon={
+                loading ? <CircularProgress size={22} color="inherit" /> : null
+              }
             >
-              Đăng nhập
+              {loading ? "Đang đăng nhập..." : "Đăng nhập"}
             </Button>
           </Box>
 
@@ -171,7 +185,7 @@ const Login = () => {
               type="button"
               className="google-btn"
               onClick={handleGoogleLogin}
-              disabled={false}
+              disabled={loading}
             >
               <span className="google-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24">
