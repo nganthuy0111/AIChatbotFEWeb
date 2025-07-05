@@ -99,7 +99,7 @@ const Register = () => {
           <Box className="auth-footer">
             <Typography variant="body2" color="textSecondary">
               Already have an account?{" "}
-              <Link to="/" className="auth-link">
+              <Link to="/login" className="auth-link">
                 Login
               </Link>
             </Typography>

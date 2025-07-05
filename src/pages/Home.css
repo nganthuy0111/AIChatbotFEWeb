@@ -201,3 +201,66 @@
     padding: 30px 20px;
   }
 }
+
+.featured-laws-section {
+  margin: 3rem 0 2rem 0;
+}
+
+.featured-laws-section h2 {
+  color: #cdff09;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.featured-laws-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.featured-laws-list li {
+  background: #181818;
+  border: 1.5px solid #cdff09;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(205, 255, 9, 0.08);
+  padding: 1.2rem 2rem;
+  min-width: 320px;
+  max-width: 420px;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: #fff;
+  font-size: 1.08rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.featured-laws-list li:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px #cdff0933;
+  border-color: #d4ff33;
+}
+
+.featured-laws-list strong {
+  color: #cdff09;
+  font-size: 1.1rem;
+  min-width: 140px;
+  display: inline-block;
+}
+
+@media (max-width: 700px) {
+  .featured-laws-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .featured-laws-list li {
+    min-width: 0;
+    width: 100%;
+    max-width: 98vw;
+    padding: 1rem 1.2rem;
+  }
+}

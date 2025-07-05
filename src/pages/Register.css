@@ -1,119 +1,291 @@
+/* ĐỒNG BỘ GIAO DIỆN VỚI LOGIN */
 .register-page {
   min-height: 100vh;
-  background-color: #f7f8f3;
+  background: #101010;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 2rem 0;
 }
 
 .register-container {
-  background-color: white;
-  padding: 2.5rem;
-  border-radius: 12px;
+  background: #181818;
+  border-radius: 18px;
   box-shadow: 0 0 32px #cdff0933;
   border: 1.5px solid #cdff09;
-  padding-top: 100px;
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .auth-logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
   margin-right: 1rem;
+  box-shadow: 0 0 8px #cdff0933;
 }
 
 .auth-title {
   color: #cdff09;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1px;
 }
 
 .section-title {
   text-align: center;
-  color: #002e3c;
+  color: #cdff09;
   margin-bottom: 2rem;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
+  width: 100%;
   margin-bottom: 1.5rem;
 }
 
 .auth-input .MuiOutlinedInput-root {
-  background-color: #f7f8f3;
+  background: #232323 !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+  border: 1.5px solid #cdff09 !important;
+  box-shadow: none !important;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .auth-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-  border-color: #78bcc4;
+  border-color: #d4ff33 !important;
 }
 
-.auth-input
-  .MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
-  border-color: #002e3c;
+.auth-input .MuiOutlinedInput-root.Mui-focused {
+  border-color: #d4ff33 !important;
+  box-shadow: 0 0 8px #d4ff3333;
 }
 
-.submit-button {
-  background-color: #002e3c !important;
-  color: white !important;
+.auth-input .MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+
+.auth-input .MuiOutlinedInput-input {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+.auth-input .MuiInputLabel-root {
+  color: #d4ff33 !important;
+  font-weight: 500;
+}
+
+.auth-input .MuiInputLabel-root.Mui-focused {
+  color: #d4ff33 !important;
+}
+
+.auth-input .MuiOutlinedInput-input::placeholder {
+  color: #d4ff33 !important;
+  opacity: 1;
+}
+
+.submit-button,
+.submit-button.MuiButton-contained,
+.submit-button.MuiButton-root,
+.submit-button.MuiButtonBase-root {
+  background: linear-gradient(90deg, #cdff09 80%, #d4ff33 100%) !important;
+  color: #181818 !important;
+  border-radius: 12px !important;
+  border: 1.5px solid #cdff09 !important;
+  box-shadow: 0 0 8px #cdff0933 !important;
   padding: 0.8rem !important;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
   text-transform: none !important;
-  font-size: 1rem !important;
+  font-size: 1.1rem !important;
+  margin-top: 0.5rem !important;
+  transition: background 0.3s, color 0.3s, border 0.3s;
 }
 
-.submit-button:hover {
-  background-color: #004459 !important;
+.submit-button:hover,
+.submit-button.MuiButton-contained:hover,
+.submit-button.MuiButton-root:hover,
+.submit-button.MuiButtonBase-root:hover {
+  background: linear-gradient(90deg, #d4ff33 80%, #cdff09 100%) !important;
+  color: #181818 !important;
+  border-color: #d4ff33 !important;
 }
 
 .auth-separator {
   margin: 1.5rem 0;
+  width: 100%;
+}
+
+.auth-separator .MuiTypography-root {
+  color: #fff !important;
 }
 
 .social-buttons {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  width: 100%;
   margin-bottom: 1.5rem;
 }
 
 .social-button {
+  display: flex !important;
+  align-items: center !important;
   justify-content: flex-start !important;
-  text-transform: none !important;
-  color: #002e3c !important;
-  border-color: #78bcc4 !important;
-  padding: 0.8rem 1.5rem !important;
+  width: 100%;
+  height: 56px;
+  background: #232323 !important;
+  color: #cdff09 !important;
+  border: 1.5px solid #cdff09 !important;
+  border-radius: 12px !important;
+  font-size: 1rem !important;
   font-weight: 500 !important;
+  box-shadow: none !important;
+  padding: 0 1.2rem !important;
+  margin-bottom: 0.5rem;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+  text-transform: none !important;
+}
+
+.social-button .MuiButton-startIcon svg {
+  color: #cdff09 !important;
+  font-size: 1.3rem !important;
 }
 
 .social-button:hover {
-  background-color: #f7f8f3 !important;
-  border-color: #002e3c !important;
+  background: #232323 !important;
+  border-color: #d4ff33 !important;
+  color: #d4ff33 !important;
 }
 
-.social-button .MuiButton-startIcon {
-  margin-right: 1rem;
+.social-button:hover .MuiButton-startIcon svg {
+  color: #d4ff33 !important;
+}
+
+.social-button.Mui-disabled,
+.social-button:disabled,
+.social-button.Mui-disabled span,
+.social-button:disabled span,
+.social-button.Mui-disabled .MuiButton-label,
+.social-button:disabled .MuiButton-label,
+.social-button.Mui-disabled .MuiButton-label.Mui-disabled,
+.social-button:disabled .MuiButton-label.Mui-disabled,
+.social-button.MuiButton-root.Mui-disabled,
+.social-button.MuiButtonBase-root.Mui-disabled,
+.social-button.MuiButton-outlinedPrimary.Mui-disabled,
+.social-button .MuiButton-label.Mui-disabled,
+.social-button .Mui-disabled {
+  color: #cdff09 !important;
+  background: #232323 !important;
+  border: 1.5px solid #cdff09 !important;
+  opacity: 1 !important;
+}
+
+.social-button.Mui-disabled .MuiButton-startIcon svg,
+.social-button:disabled .MuiButton-startIcon svg,
+.social-button .MuiButton-startIcon.Mui-disabled svg {
+  color: #cdff09 !important;
+  opacity: 1 !important;
 }
 
 .auth-footer {
   text-align: center;
+  width: 100%;
+}
+
+.auth-footer .MuiTypography-root {
+  color: #fff !important;
 }
 
 .auth-link {
-  color: #f7444e;
+  color: #cdff09 !important;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.3s;
 }
 
 .auth-link:hover {
   text-decoration: underline;
+  color: #fff !important;
+}
+
+@media (max-width: 600px) {
+  .register-container {
+    padding: 1.5rem 0.5rem 1rem 0.5rem;
+  }
+  .auth-title {
+    font-size: 1.3rem;
+  }
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  background: #232323;
+  color: #cdff09;
+  color: #7cff00;
+  border: 1.5px solid #7cff00;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: none;
+  padding: 0 1.2rem;
+  margin-bottom: 0.5rem;
+  transition: border-color 0.3s, color 0.3s, background 0.3s;
+  text-transform: none;
+  cursor: pointer;
+  outline: none;
+  gap: 0.8rem;
+}
+
+.google-btn .google-icon svg {
+  display: block;
+  color: #7cff00;
+}
+
+.google-btn .google-text {
+  color: #7cff00;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.google-btn:hover {
+  background: #232323;
+  border-color: #a3ff5c;
+  color: #a3ff5c;
+}
+
+.google-btn:hover .google-icon svg,
+.google-btn:disabled .google-icon svg {
+  color: #a3ff5c;
+}
+
+.google-btn:disabled {
+  color: #cdff09;
+  background: #232323;
+  border: 1.5px solid #cdff09;
+  opacity: 1;
+}
+
+.google-btn:disabled .google-icon svg {
+  color: #cdff09;
+  opacity: 1;
 }

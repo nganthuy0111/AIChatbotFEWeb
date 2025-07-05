@@ -80,11 +80,11 @@ const Login = () => {
           navigate("/home");
         }
       } else {
-        setError("Đăng nhập thành công nhưng không nhận được token");
+        setError("Login successful but no token received");
         setShowError(true);
       }
     } catch (error) {
-      let errorMessage = "Đã xảy ra lỗi trong quá trình đăng nhập";
+      let errorMessage = "An error occurred during login";
 
       if (error.response?.data?.message) {
         errorMessage = error.response.data.message;
@@ -136,7 +136,7 @@ const Login = () => {
           <Box component="form" onSubmit={handleSubmit} className="auth-form">
             <TextField
               fullWidth
-              label="Địa chỉ email"
+              label="Email address"
               variant="outlined"
               type="email"
               required
@@ -148,7 +148,7 @@ const Login = () => {
             />
             <TextField
               fullWidth
-              label="Mật khẩu"
+              label="Password"
               variant="outlined"
               type="password"
               required
@@ -168,14 +168,14 @@ const Login = () => {
                 loading ? <CircularProgress size={22} color="inherit" /> : null
               }
             >
-              {loading ? "Đang đăng nhập..." : "Đăng nhập"}
+              {loading ? "Signing in..." : "Sign In"}
             </Button>
           </Box>
 
           <Box className="auth-separator">
             <Divider>
               <Typography variant="body2" color="textSecondary">
-                HOẶC
+                OR
               </Typography>
             </Divider>
           </Box>
@@ -197,15 +197,15 @@ const Login = () => {
                   </g>
                 </svg>
               </span>
-              <span className="google-text">Tiếp tục với Google</span>
+              <span className="google-text">Continue with Google</span>
             </button>
           </Box>
 
           <Box className="auth-footer">
             <Typography variant="body2" color="textSecondary">
-              Chưa có tài khoản?{" "}
+              Don't have an account?{" "}
               <Link to="/register" className="auth-link">
-                Đăng ký
+                Sign Up
               </Link>
             </Typography>
           </Box>
