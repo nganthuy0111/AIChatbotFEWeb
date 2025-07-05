@@ -21,7 +21,7 @@ const Chat = () => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hello! I'm EduLawAI, how can I assist you today?",
+      text: "Hello! I'm ELA, how can I assist you today?",
       sender: "bot",
       timestamp: new Date(),
     },
@@ -120,7 +120,7 @@ const Chat = () => {
     setMessages([
       {
         id: 1,
-        text: "Hello! I'm EduLawAI, how can I assist you today?",
+        text: "Hello! I'm ELA, how can I assist you today?",
         sender: "bot",
         timestamp: new Date(),
       },
@@ -151,7 +151,7 @@ const Chat = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h5">Chat with EduLawAI</Typography>
+            <Typography variant="h5">Chat with ELA</Typography>
           </Box>
 
           <Paper className="chat-box">

@@ -45,7 +45,6 @@ function App() {
         />
         <Route path="/profile" element={<Profile />} />
       </Routes>
-      <ChatButton />
       {!isAdminPage && <Footer />}
     </div>
   );

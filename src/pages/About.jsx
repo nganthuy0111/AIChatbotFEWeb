@@ -49,10 +49,10 @@ const About = () => {
         }}
       >
         <Container maxWidth="md">
-          {/* <Avatar src="/src/assets/logo.png" alt="EduLawAI" sx={{ width: 96, height: 96, mx: "auto", mb: 2, border: "3px solid #cdff09", bgcolor: "#181818" }} /> */}
+          {/* <Avatar src="/src/assets/logo.png" alt="ELA" sx={{ width: 96, height: 96, mx: "auto", mb: 2, border: "3px solid #cdff09", bgcolor: "#181818" }} /> */}
           <img
             src="/src/assets/logo.png"
-            alt="EduLawAI"
+            alt="ELA"
             style={{
               width: 96,
               height: 96,
@@ -72,7 +72,7 @@ const About = () => {
               fontSize: { xs: 32, md: 48 },
             }}
           >
-            About EduLawAI
+            About ELA
           </Typography>
           <Typography
             variant="h5"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,24 +8,59 @@ import {
   faCreditCard,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../hooks/useAuth";
+import api from "../config/axios";
 
 function Profile() {
   const navigate = useNavigate();
-  // Dữ liệu code cứng
-  const user = {
-    userName: "Nguyễn Văn A",
-    userEmail: "nguyenvana@example.com",
-    role: "Admin",
-    userStatus: "Active",
-    image: "/src/assets/edulawai.jpg",
-    createdAt: "2023-01-15T00:00:00Z",
-  };
+  const { userId, logout } = useAuth();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!userId) {
+      setError("Không xác định được người dùng. Vui lòng đăng nhập lại.");
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    api
+      .get(`/User/${userId}`)
+      .then((res) => {
+        setUser(res.data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError("Không thể tải thông tin người dùng.");
+        setLoading(false);
+      });
+  }, [userId]);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
+    logout();
     navigate("/login");
   };
+
+  if (loading) {
+    return (
+      <div className="profile-page with-sidebar">
+        <div className="profile-content-center">Đang tải thông tin...</div>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="profile-page with-sidebar">
+        <div className="profile-content-center" style={{ color: "red" }}>
+          {error}
+        </div>
+      </div>
+    );
+  }
+  if (!user) {
+    return null;
+  }
 
   return (
     <div className="profile-page with-sidebar">
@@ -58,7 +93,11 @@ function Profile() {
       <div className="profile-content-center">
         <div className="profile-card modern">
           <div className="profile-avatar-section">
-            <img src={user.image} alt="avatar" className="profile-avatar" />
+            <img
+              src={user.image || "/src/assets/logoEduLawAI.png"}
+              alt="avatar"
+              className="profile-avatar"
+            />
             <h2>{user.userName}</h2>
             <span
               className={`status-badge ${
@@ -72,7 +111,10 @@ function Profile() {
             <div className="profile-info-item">Email: {user.userEmail}</div>
             <div className="profile-info-item">Role: {user.role}</div>
             <div className="profile-info-item">
-              Joined: {new Date(user.createdAt).toLocaleDateString()}
+              Joined:{" "}
+              {user.createdAt
+                ? new Date(user.createdAt).toLocaleDateString()
+                : ""}
             </div>
           </div>
         </div>

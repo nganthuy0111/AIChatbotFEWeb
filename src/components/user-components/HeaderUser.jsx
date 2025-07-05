@@ -23,11 +23,11 @@ function HeaderUser() {
       <div className="header-content">
         <div className="logo">
           <img
-            src="./src/assets/logo.png"
-            alt="EduLawAI Logo"
+            src="/src/assets/logoEduLawAI.png"
+            alt="ELA Logo"
             className="logo-image"
           />
-          <Link to="/home">EduLawAI</Link>
+          <Link to="/home">ELA</Link>
         </div>
         <nav className="nav-links">
           <Link to="/home">Home</Link>
@@ -39,7 +39,7 @@ function HeaderUser() {
             <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
               <FontAwesomeIcon
                 icon={faUser}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", color: "#cdff09" }}
                 onClick={handleProfileClick}
                 title="Profile"
               />

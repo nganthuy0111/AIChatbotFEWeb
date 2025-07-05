@@ -39,7 +39,7 @@ const Footer = () => {
                 </Box>
                 <Box className="contact-item">
                   <Email />
-                  <Typography variant="body2">support@edulawai.com</Typography>
+                  <Typography variant="body2">support@ela.com</Typography>
                 </Box>
                 <Box className="contact-item">
                   <Phone />
@@ -68,7 +68,7 @@ const Footer = () => {
 
         <Box className="footer-bottom">
           <Typography variant="body2" className="copyright">
-            © 2024 EduLawAI. All rights reserved.
+            © 2024 ELA. All rights reserved.
           </Typography>
           <Box className="legal-links">
             <Link href="/privacy">Privacy Policy</Link>

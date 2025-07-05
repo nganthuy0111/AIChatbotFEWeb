@@ -4,7 +4,7 @@ function Header() {
     <div className="header-container">
       <img src="/src/assets/edulawai.jpg" alt="" />
       <p>
-        <strong>EduLawAI</strong>
+        <strong>ELA</strong>
       </p>
     </div>
   );

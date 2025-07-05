@@ -27,12 +27,12 @@ const Register = () => {
         <Box className="register-container">
           <Box className="logo-section">
             <img
-              src="/src/assets/edulawai.jpg"
-              alt="EduLawAI Logo"
+              src="/src/assets/logoEduLawAI.png"
+              alt="ELA Logo"
               className="auth-logo"
             />
             <Typography variant="h4" className="auth-title">
-              EduLawAI
+              ELA
             </Typography>
           </Box>
 

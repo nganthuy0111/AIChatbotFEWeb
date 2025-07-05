@@ -57,7 +57,7 @@ const SidebarAdmin = ({ onSectionChange }) => {
         <Box
           component="img"
           src="/src/assets/edulawai.jpg"
-          alt="EduLawAI"
+          alt="ELA"
           sx={{
             height: 40,
             width: 40,
@@ -76,7 +76,7 @@ const SidebarAdmin = ({ onSectionChange }) => {
             fontWeight: 600,
           }}
         >
-          EduLawAI
+          ELA
         </Typography>
       </Box>
       <Box sx={{ overflow: "auto" }}>
