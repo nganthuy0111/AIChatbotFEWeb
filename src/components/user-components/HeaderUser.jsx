@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 
 function HeaderUser() {
   const navigate = useNavigate();
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, logout, userRole } = useAuth();
 
   const handleProfileClick = () => {
     navigate("/profile");
@@ -33,6 +33,9 @@ function HeaderUser() {
           <Link to="/home">Home</Link>
           <Link to="/search">Search</Link>
           <Link to="/about">About</Link>
+          {userRole === "Admin" || userRole === "admin" ? (
+            <Link to="/admin">Dashboard</Link>
+          ) : null}
         </nav>
         <div className="header-right">
           {isAuthenticated ? (

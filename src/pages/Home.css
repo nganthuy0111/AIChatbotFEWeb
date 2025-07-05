@@ -10,6 +10,7 @@
     linear-gradient(90deg, rgba(124, 255, 0, 0.1) 1px, transparent 1px);
   background-size: 100% 100%, 20px 20px, 20px 20px;
   color: #cdff09;
+  padding-bottom: 0;
 }
 
 /* Hero Section */
@@ -203,7 +204,7 @@
 }
 
 .featured-laws-section {
-  margin: 3rem 0 2rem 0;
+  margin: 3rem 0 0 0;
 }
 
 .featured-laws-section h2 {
@@ -215,9 +216,10 @@
 
 .featured-laws-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 0.5rem;
   justify-content: center;
+  align-items: center;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -225,42 +227,52 @@
 
 .featured-laws-list li {
   background: #181818;
-  border: 1.5px solid #cdff09;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(205, 255, 9, 0.08);
-  padding: 1.2rem 2rem;
-  min-width: 320px;
-  max-width: 420px;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  border: 1px solid #cdff09;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(205, 255, 9, 0.08);
+  padding: 1rem 2rem;
+  width: 100%;
+  max-width: 900px;
   color: #fff;
   font-size: 1.08rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  transition: transform 0.18s, box-shadow 0.18s;
 }
 
 .featured-laws-list li:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 8px 32px #cdff0933;
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 4px 16px #cdff0933;
   border-color: #d4ff33;
 }
 
 .featured-laws-list strong {
   color: #cdff09;
   font-size: 1.1rem;
-  min-width: 140px;
+  min-width: 180px;
   display: inline-block;
 }
 
 @media (max-width: 700px) {
-  .featured-laws-list {
-    flex-direction: column;
-    align-items: center;
-  }
   .featured-laws-list li {
     min-width: 0;
-    width: 100%;
+    width: 98vw;
     max-width: 98vw;
-    padding: 1rem 1.2rem;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
   }
+  .featured-laws-list strong {
+    min-width: 120px;
+    font-size: 1rem;
+  }
+}
+
+.law-icon {
+  color: #cdff09;
+  font-size: 1.4rem;
+  margin-right: 0.7rem;
+  display: flex;
+  align-items: center;
+  min-width: 28px;
 }

@@ -199,7 +199,6 @@ const About = () => {
           </Grid>
         </Container>
       </Box>
-      <Footer />
     </Box>
   );
 };

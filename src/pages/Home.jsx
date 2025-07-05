@@ -10,9 +10,10 @@ import {
   faLightbulb,
   faBolt,
   faShieldHalved,
+  faGavel,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faRobot, faLightbulb, faBolt, faShieldHalved);
+library.add(faRobot, faLightbulb, faBolt, faShieldHalved, faGavel);
 
 function Home() {
   return (
@@ -105,22 +106,37 @@ function Home() {
         <h2>Luật giáo dục nổi bật</h2>
         <ul className="featured-laws-list">
           <li>
+            <span className="law-icon">
+              <FontAwesomeIcon icon={faGavel} />
+            </span>
             <strong>Luật Giáo dục 2019</strong>: Quy định về hệ thống giáo dục
             quốc dân, quyền và nghĩa vụ của người học, nhà giáo, cơ sở giáo dục.
           </li>
           <li>
+            <span className="law-icon">
+              <FontAwesomeIcon icon={faGavel} />
+            </span>
             <strong>Luật Giáo dục Đại học 2018</strong>: Điều chỉnh tổ chức,
             quản lý, hoạt động của các cơ sở giáo dục đại học.
           </li>
           <li>
+            <span className="law-icon">
+              <FontAwesomeIcon icon={faGavel} />
+            </span>
             <strong>Luật Giáo dục Nghề nghiệp 2014</strong>: Quy định về đào tạo
             nghề, quyền lợi và nghĩa vụ của học viên, giáo viên dạy nghề.
           </li>
           <li>
+            <span className="law-icon">
+              <FontAwesomeIcon icon={faGavel} />
+            </span>
             <strong>Luật Bảo vệ, chăm sóc và giáo dục trẻ em 2004</strong>: Bảo
             vệ quyền trẻ em trong môi trường giáo dục.
           </li>
           <li>
+            <span className="law-icon">
+              <FontAwesomeIcon icon={faGavel} />
+            </span>
             <strong>Luật Phổ cập giáo dục tiểu học 1991</strong>: Quy định về
             phổ cập giáo dục tiểu học trên toàn quốc.
           </li>
